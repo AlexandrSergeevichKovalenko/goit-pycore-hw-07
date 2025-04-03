@@ -1,7 +1,6 @@
 from collections import UserDict
 from datetime import datetime, date, timedelta
 import re
-import pickle
 from pathlib import Path
 
 #global variable(name of the file) for storaging all programm progress 
@@ -144,20 +143,5 @@ class AddressBook(UserDict):
         total_info_line = "\n".join(output)
         return total_info_line
 
-#book instance serialization function using pickle module    
-def save_data(book, filename = FILENAME):
-    with open(filename, "wb") as record_file:
-        pickle.dump(book, record_file)
-
-#loading book from file or creating a new book instance if there is no file
-def load_data():
-    if FILENAME.is_file():
-        try:
-            with open(FILENAME, "rb") as record_file:
-                return pickle.load(record_file)
-        except (pickle.UnpicklingError, EOFError, FileNotFoundError):
-            print("A mistake occured trying to load the data")
-    
-    return AddressBook()
     
     

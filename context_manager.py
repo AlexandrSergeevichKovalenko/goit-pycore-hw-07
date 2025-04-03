@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from classes_for_program import *
+from functions_block import load_data, save_data
 
 #using context manager to operate safely 
 @contextmanager
